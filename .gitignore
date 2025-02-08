@@ -1,5 +1,7 @@
 .env
 logtest*.php
+TODO.md
+*.drawio
 
 Images/*
 Documentation/*
@@ -7,3 +9,4 @@ original/*
 log/*
 usr/*
 sql/*
+vendor/*
