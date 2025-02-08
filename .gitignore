@@ -1,0 +1,9 @@
+.env
+logtest*.php
+
+Images/*
+Documentation/*
+original/*
+log/*
+usr/*
+sql/*
