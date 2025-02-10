@@ -1,5 +1,7 @@
 <?php
 
+use Core\DateTimeCustom;
+
 require view_path('partials/top.php');
 
 ?>
@@ -15,6 +17,35 @@ require view_path('partials/top.php');
       - View all committees, their members, events, and recent activities.
       - Option to manage the committee (assign or remove members, change committee details).
   </pre>
+
+  <table>
+    NOTE: ADMIN
+    <?php if ($committees ?? false): ?>
+      <tr>
+        <th>Committee ID</th>
+        <th>Committee name</th>
+        <th>Description</th>
+        <th>Created at</th>
+        <th>Last updated</th>
+      </tr>
+
+      <?php foreach ($committees as $committee): ?>
+        <tr>
+          <td><?= htmlspecialchars($committee['committee_id' ?? '-']); ?></td>
+          <td>
+            <?= '<a href="/committees/?id=' . htmlspecialchars($committee['committee_id']) . '">' . htmlspecialchars($committee['committee_name' ?? '-']); ?>
+          </td>
+          <td><?= htmlspecialchars($committee['description' ?? '-']); ?></td>
+          <td><?= htmlspecialchars((new DateTimeCustom($committee['created_at']))->formatDate_dmY() ?? '-'); ?></td>
+          <td><?= htmlspecialchars((new DateTimeCustom($committee['updated_at']))->formatDateTime_dMYHiS() ?? '-'); ?></td>
+        <tr>
+        <?php endforeach; ?>
+      <?php else: ?>
+      <tr>
+        <td>No committees found.</td>
+      </tr>
+    <?php endif; ?>
+  </table>
 </div>
 
 <?php
