@@ -1,5 +1,7 @@
 <?php
 
+use Core\DateTimeCustom;
+
 require view_path('partials/top.php');
 
 ?>
@@ -16,6 +18,7 @@ require view_path('partials/top.php');
   </pre>
 
   <table>
+    NOTE: ADMIN
     <?php if ($members ?? false): ?>
       <tr>
         <th>Member ID</th>
@@ -30,26 +33,27 @@ require view_path('partials/top.php');
         <th>Joined committee</th>
         <th>Last updated</th>
       </tr>
+
       <?php foreach ($members as $member): ?>
         <tr>
-          <?php foreach ($member as $key => $value): ?>
-            <?php if (is_string($value) && $key === 'updated_at'): ?>
-              <?php $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $value); ?>
-              <td><?= htmlspecialchars($datetime->format('D, d/m/Y H:i:s') ?? ''); ?></td>
-            <?php elseif (is_string($value) && $key !== 'updated_at'): ?>
-              <?php $datetime = DateTime::createFromFormat('Y-m-d H:i:s', $value); ?>
-              <?php if ($datetime && $datetime->format('Y-m-d H:i:s') === $value): ?>
-                <td><?= htmlspecialchars($datetime->format('d/m/Y') ?? ''); ?></td>
-              <?php else: ?>
-                <td><?= htmlspecialchars($value ?? ''); ?></td>
-              <?php endif; ?>
-            <?php else: ?>
-              <td><?= htmlspecialchars($value ?? ''); ?></td>
-            <?php endif; ?>
-          <?php endforeach; ?>
-        </tr>
-      <?php endforeach; ?>
-    <?php else: ?>
+          <td><?= htmlspecialchars(str_pad($member['member_id'], 6, '0', STR_PAD_LEFT) ?? ''); ?></td>
+          <td><?= htmlspecialchars($member['username'] ?? '-'); ?></td>
+          <td><?= htmlspecialchars($member['email'] ?? '-'); ?></td>
+          <td><?= htmlspecialchars($member['first_name'] ?? '-'); ?></td>
+          <td><?= htmlspecialchars($member['last_name'] ?? '-'); ?></td>
+          <td><?= htmlspecialchars($member['phone_number'] ?? '-'); ?></td>
+          <td><?= htmlspecialchars((new DateTimeCustom($member['created_at']))->formatDate_dmY() ?? '-'); ?></td>
+          <td>
+            <?= isset($member['committee_name']) ? '<a href="/committees/?id=' . htmlspecialchars($member['committee_id']) . '">' . htmlspecialchars($member['committee_name']) . '</a>' : '-'; ?>
+          </td>
+          <td><?= htmlspecialchars($member['role'] ?? '-'); ?></td>
+          <td>
+            <?= htmlspecialchars(isset($member['joined_at']) ? (new DateTimeCustom($member['joined_at']))->formatDate_dmY() : '-'); ?>
+          </td>
+          <td><?= htmlspecialchars((new DateTimeCustom($member['updated_at']))->formatDateTime_dMYHiS() ?? '-'); ?></td>
+        <tr>
+        <?php endforeach; ?>
+      <?php else: ?>
       <tr>
         <td>No members found.</td>
       </tr>
