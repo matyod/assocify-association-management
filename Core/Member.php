@@ -60,7 +60,12 @@ class Member
 
   public function getAllMembers()
   {
-    $sql = 'SELECT * FROM members';
+    $sql = 'SELECT m.member_id, m.username, m.email, m.first_name, m.last_name, m.phone_number, m.created_at, c.committee_name, cm.role, cm.joined_at, m.updated_at
+    FROM members m
+    LEFT JOIN committee_members cm
+    ON m.member_id = cm.c_member_id
+    LEFT JOIN committees c
+    ON cm.committee_id = c.committee_id;';
     return $this->db->fetchAll($sql);
     // TODO: try-catch
   }
