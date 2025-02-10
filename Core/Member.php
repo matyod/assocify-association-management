@@ -60,7 +60,7 @@ class Member
 
   public function getAllMembers()
   {
-    $sql = 'SELECT m.member_id, m.username, m.email, m.first_name, m.last_name, m.phone_number, m.created_at, c.committee_name, cm.role, cm.joined_at, m.updated_at
+    $sql = 'SELECT m.member_id, m.username, m.email, m.first_name, m.last_name, m.phone_number, m.created_at, c.committee_name, cm.role, cm.joined_at, m.updated_at, c.committee_id
     FROM members m
     LEFT JOIN committee_members cm
     ON m.member_id = cm.c_member_id
