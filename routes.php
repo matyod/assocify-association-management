@@ -6,6 +6,7 @@ $router->get('/home', 'controllers/home/index.php')->only('auth');
 $router->get('/notifications', 'controllers/notifications/index.php')->only('auth');
 
 $router->get('/events', 'controllers/events/index.php')->only('auth');
+$router->get('/event', 'controllers/events/show.php')->only('auth');
 $router->get('/events/create', 'controllers/events/create.php')->only('auth');
 $router->get('/events/update', 'controllers/events/update.php')->only('auth');
 // TODO: create post
