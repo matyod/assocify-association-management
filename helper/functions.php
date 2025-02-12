@@ -2,16 +2,16 @@
 
 use Core\Logger;
 
-function dump($value)
+function d($value)
 {
   echo '<pre>';
   var_dump($value);
   echo '</pre>';
 }
 
-function dumpDie($value)
+function dd($value)
 {
-  dump($value);
+  d($value);
   die();
 }
 
