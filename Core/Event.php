@@ -24,12 +24,14 @@ class Event
     return $this->db->fetchAll($sql);
   }
 
-  // public function getEventById($id)
-  // {
-  //   $sql = 'SELECT * FROM events WHERE event_id = :event_id';
-  //   return $this->db->fetchOne($sql, ['event_id' => $id]);
-  //   // TODO: try-catch
-  // }
+  public function getEventById($id)
+  {
+    $sql = 'SELECT event_date, event_name, description
+    FROM events
+    WHERE event_id = :event_id';
+    return $this->db->fetchOne($sql, ['event_id' => $id]);
+    // TODO: try-catch
+  }
 
   // public function getMemberByUsername($username)
   // {
