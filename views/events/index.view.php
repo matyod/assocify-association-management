@@ -18,6 +18,39 @@ require view_path('partials/top.php');
     - Access to register/remove members for specific events.
   </pre>
 
+  <!--  -->
+
+  <table>
+    NOTE: MEMBER(USER)
+    <?php if ($events ?? false): ?>
+      <tr>
+        <th>Date</th>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Event</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+      <?php foreach ($events as $event): ?>
+        <tr>
+          <td><?= htmlspecialchars((new DateTimeCustom($event['event_date']))->formatDate_dmY() ?? ''); ?></td>
+          <td><?= htmlspecialchars((new DateTimeCustom($event['event_date']))->formatDay_l() ?? ''); ?></td>
+          <td><?= htmlspecialchars((new DateTimeCustom($event['event_date']))->formatTime_12HrsMeridiem() ?? ''); ?></td>
+          <td>
+            <?= '<a href="/event?id=' . ($event['event_id'] ?? '') . '">' . htmlspecialchars($event['event_name'] ?? '') . '</a>'; ?>
+          </td>
+          <td><?= htmlspecialchars($event['description'] ?? ''); ?></td>
+        <tr>
+        <?php endforeach; ?>
+      <?php else: ?>
+      <tr>
+        <td>No events found.</td>
+      </tr>
+    <?php endif; ?>
+  </table>
+
+  <!--  -->
+
   <table>
     NOTE: ADMIN
     <?php if ($events ?? false): ?>
@@ -38,19 +71,19 @@ require view_path('partials/top.php');
           <td><?= htmlspecialchars((new DateTimeCustom($event['event_date']))->formatDay_l() ?? ''); ?></td>
           <td><?= htmlspecialchars((new DateTimeCustom($event['event_date']))->formatTime_12HrsMeridiem() ?? ''); ?></td>
           <td>
-            <?= '<a href="/events/?id=' . ($event['event_id'] ?? '') . '">' . htmlspecialchars($event['event_name'] ?? '') . '</a>'; ?>
+            <?= '<a href="/event?id=' . ($event['event_id'] ?? '') . '">' . htmlspecialchars($event['event_name'] ?? '') . '</a>'; ?>
           </td>
           <td><?= htmlspecialchars($event['description'] ?? ''); ?></td>
           <td>
-            <?= '<a href="/committees/?id=' . ($event['committee_id'] ?? '') . '">' . htmlspecialchars($event['committee_name'] ?? '') . '</a>'; ?>
+            <?= '<a href="/committee?id=' . ($event['committee_id'] ?? '') . '">' . htmlspecialchars($event['committee_name'] ?? '') . '</a>'; ?>
           </td>
           <td><?= htmlspecialchars((new DateTimeCustom($event['created_at']))->formatDateTime_dMYHiS() ?? ''); ?></td>
           <td><?= htmlspecialchars((new DateTimeCustom($event['updated_at']))->formatDateTime_dMYHiS() ?? ''); ?></td>
-          <td><a href="/events/new/participant/?id=<?= htmlspecialchars($_SESSION['user_id'] ?? ''); ?>">Register as
+          <td><a href="/event/new/participant?id=<?= htmlspecialchars($_SESSION['user_id'] ?? ''); ?>">Register as
               participant</a></td>
         <tr>
         <?php endforeach; ?>
-        <?php else: ?>
+      <?php else: ?>
       <tr>
         <td>No events found.</td>
       </tr>
