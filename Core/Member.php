@@ -6,7 +6,10 @@ use PDOException;
 
 class Member
 {
-  private $db;
+  const MEMBER_ID_LENGTH = 6;
+  const MEMBER_PAD_STRING = '0';
+  const MEMBER_PAD_TYPE = STR_PAD_LEFT;
+  protected $db;
 
   public function __construct(Database $db)
   {
@@ -97,5 +100,15 @@ class Member
 
     return true;
     // TODO: try-catch
+  }
+
+  /**
+   * Pad member ID with leading 0s
+   * @return void
+   * @author matyod
+   */
+  public function padMemberId($id)
+  {
+    return str_pad($id, self::MEMBER_ID_LENGTH, self::MEMBER_PAD_STRING, self::MEMBER_PAD_TYPE);
   }
 }
