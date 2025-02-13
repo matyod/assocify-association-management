@@ -33,7 +33,7 @@ require view_path('partials/top.php');
         <tr>
           <td><?= htmlspecialchars($committee['committee_id' ?? '-']); ?></td>
           <td>
-            <?= '<a href="/committees/?id=' . htmlspecialchars($committee['committee_id']) . '">' . htmlspecialchars($committee['committee_name' ?? '-']); ?>
+            <?= '<a href="/committee?id=' . htmlspecialchars($committee['committee_id']) . '">' . htmlspecialchars($committee['committee_name' ?? '-']); ?>
           </td>
           <td><?= htmlspecialchars($committee['description' ?? '-']); ?></td>
           <td><?= htmlspecialchars((new DateTimeCustom($committee['created_at']))->formatDate_dmY() ?? '-'); ?></td>
