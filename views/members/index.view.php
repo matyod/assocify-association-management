@@ -34,9 +34,9 @@ require view_path('partials/top.php');
         <th>Last updated</th>
       </tr>
 
-      <?php foreach ($members as $member): ?>
+      <?php foreach ($members as $member):?>
         <tr>
-          <td><?= htmlspecialchars(str_pad($member['member_id'], 6, '0', STR_PAD_LEFT) ?? ''); ?></td>
+          <td><?= htmlspecialchars($memberObj->padMemberId($member['member_id']) ?? ''); ?></td>
           <td><?= htmlspecialchars($member['username'] ?? '-'); ?></td>
           <td><?= htmlspecialchars($member['email'] ?? '-'); ?></td>
           <td><?= htmlspecialchars($member['first_name'] ?? '-'); ?></td>
