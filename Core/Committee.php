@@ -16,8 +16,17 @@ class Committee
   public function getAllCommittees()
   {
     $sql = 'SELECT *
-    FROM committees c';
+    FROM committees';
     return $this->db->fetchAll($sql);
+  }
+
+  public function getCommitteeMembersByCommitteeId($id)
+  {
+    $sql = 'SELECT cm.c_member_id, cm.role, cm.joined_at, m.username, m.email, m.first_name, m.last_name, m.phone_number
+    FROM committee_members cm
+    LEFT JOIN members m ON cm.c_member_id = m.member_id
+    WHERE cm.committee_id = :committee_id;';
+    return $this->db->fetchAll($sql, ['committee_id' => $id]);
   }
 
   // public function getEventById($id)
