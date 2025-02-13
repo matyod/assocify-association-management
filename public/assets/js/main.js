@@ -11,6 +11,7 @@ function toggleDropdown(buttonId, menuId) {
 toggleDropdown("notification-dropdown-btn", "notification-dropdown");
 toggleDropdown("user-menu-btn", "user-menu-dropdown");
 toggleDropdown("dropdown-btn-events", "dropdown-events");
+toggleDropdown("dropdown-btn-locations", "dropdown-locations");
 toggleDropdown("dropdown-btn-committees", "dropdown-committees");
 toggleDropdown("dropdown-btn-members", "dropdown-members");
 toggleDropdown("dropdown-btn-account", "dropdown-account");
