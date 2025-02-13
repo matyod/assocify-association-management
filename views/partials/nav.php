@@ -14,6 +14,7 @@
 
           <hr class="w-54 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700"> -->
 
+          <!-- Home -->
           <li>
             <a href="/"
               class="<?= $uri === '/' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -26,6 +27,7 @@
               <span class="ms-3">Home</span>
             </a>
           </li>
+          <!-- Notifications -->
           <li>
             <a href="/notifications"
               class="<?= $uri === '/notifications' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -42,6 +44,7 @@
               <span class="ms-3">Notifications</span>
             </a>
           </li>
+          <!-- Events -->
           <li>
             <button type="button"
               class="<?= $uri === '/events' || $uri === '/events/create' || $uri === '/events/update' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -77,6 +80,43 @@
               </li>
             </ul>
           </li>
+          <!-- Locations -->
+          <li>
+            <button type="button"
+              class="<?= $uri === '/locations' || $uri === '/locations/create' || $uri === '/locations/update' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              aria-controls="dropdown-example" data-collapse-toggle="dropdown-example" id="dropdown-btn-locations">
+              <svg
+                class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 24">
+                <path fill="currentColor"
+                  d="M17 12h-5v5h5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1zm3 18H5V8h14z" />
+              </svg>
+              <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Locations</span>
+              <!-- TODO for admin (president, committee secretary): add events, update event name, update event description, update event date -->
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <ul id="dropdown-locations" class="hidden py-2 space-y-2">
+              <li>
+                <a href="/locations"
+                  class="<?= $uri === '/locations' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">All
+                  Locations</a>
+              </li>
+              <li>
+                <a href="/locations/create"
+                  class="<?= $uri === '/locations/create' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">New
+                  Location</a>
+              </li>
+              <li>
+                <a href="/locations/update"
+                  class="<?= $uri === '/locations/update' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update
+                  Location</a>
+              </li>
+            </ul>
+          </li>
+          <!-- Committees -->
           <li>
             <button type="button"
               class="<?= $uri === '/committees' || $uri === '/committees/create' || $uri === '/committees/update' || $uri === '/committees/member-registration' ? 'bg-gray-100 dark:bg-gray-700' : '' ?> flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
