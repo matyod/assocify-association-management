@@ -5,10 +5,8 @@ require view_path('partials/top.php');
 ?>
 
 <div class="p-4 pt-20 sm:ml-64 min-h-screen">
-  <?php if ($_SESSION) {
-    dump($_SESSION);
-  } ?>
   <h1 class="text-2xl"><?= $h1 ?? ''; ?></h1>
+
   <pre>
     For Regular Members:
     - Overview of upcoming events they are interested in or have registered for.
