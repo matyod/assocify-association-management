@@ -13,6 +13,7 @@ $router->get('/events/update', 'controllers/events/update.php')->only('auth');
 // TODO: update post
 
 $router->get('/committees', 'controllers/committees/index.php')->only('auth');
+$router->get('/committee', 'controllers/committees/show.php')->only('auth');
 // dump($_SERVER);
 // dumpDie($_SESSION);
 $router->get('/committees/create', 'controllers/committees/create.php')->only('auth');
@@ -23,6 +24,7 @@ $router->get('/committees/member-registration', 'controllers/committees/members-
 // TODO: member register post
 
 $router->get('/members', 'controllers/members/index.php')->only('auth');
+$router->get('/member', 'controllers/members/show.php')->only('auth');
 $router->get('/members/create', 'controllers/members/create.php')->only('auth');
 // TODO: create post
 
