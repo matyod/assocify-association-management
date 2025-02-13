@@ -12,6 +12,13 @@ $router->get('/events/update', 'controllers/events/update.php')->only('auth');
 // TODO: create post
 // TODO: update post
 
+$router->get('/locations', 'controllers/locations/index.php')->only('auth');
+$router->get('/location', 'controllers/locations/show.php')->only('auth');
+$router->get('/locations/create', 'controllers/locations/create.php')->only('auth');
+$router->get('/locations/update', 'controllers/locations/update.php')->only('auth');
+// TODO: create post
+// TODO: update post
+
 $router->get('/committees', 'controllers/committees/index.php')->only('auth');
 $router->get('/committee', 'controllers/committees/show.php')->only('auth');
 // dump($_SERVER);
