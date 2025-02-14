@@ -1,7 +1,7 @@
 <?php
 
 use Core\Database;
-use Core\Member;
+use Core\DatabaseManager;
 use Core\Router;
 use Core\Logger;
 use Core\Session;
@@ -16,21 +16,10 @@ spl_autoload_register(function ($class) {
   require base_path("{$class}.php");
 });
 
-// if($db){
-//   dumpDie($db);
-// }
-
 $router = new Router();
 $logger = new Logger();
-$db = Database::getInstance();
+$db = DatabaseManager::getDatabase();
 $session = new Session();
-
-// if($db){
-//   dumpDie($db);
-// }
-
-$member = new Member($db);
-$memberData = $member->getMemberById(2);
 
 $reqUri = $_SERVER['REQUEST_URI'];
 $uri = parse_url($reqUri)['path'];
