@@ -23,7 +23,7 @@ class Database
   /**
    * @var Database|null The single instance of Database class
    */
-  private static $instance = null;
+  // private static $instance = null;
 
   /**
    * @var PDO Database connection instance
@@ -40,7 +40,7 @@ class Database
    * 
    * @author matyod
    */
-  private function __construct()
+  public function __construct()
   {
     $dotenv = Dotenv::createImmutable(base_path());
     $dotenv->load();
@@ -75,20 +75,6 @@ class Database
       echo 'PDO error: ' . $e->getMessage();
       # TODO 1.
     }
-  }
-
-  /**
-   * Get the single instance of the Database class (Singleton)
-   * 
-   * @return Database The single instance of the Database class
-   */
-  public static function getInstance()
-  {
-    if(self::$instance === null){
-      self::$instance = new self(); // Create the instance if it does not exist
-    }
-
-    return self::$instance;
   }
 
   /**
