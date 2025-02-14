@@ -11,6 +11,9 @@
 use Core\Validator;
 use Core\Database;
 use Core\Member;
+use Core\Session;
+
+// dd($_POST);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $errors = [];
@@ -35,25 +38,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
 
+  // dd($errors);
+
   if (!empty($errors)) {
     return require view_path('authentication/index.view.php');
   }
   // return require view_path('authentication/index.view.php'');
   try {
-    $db = Database::getInstance();
+    // $db = Database::getInstance();
     $member = new Member($db);
     // throw new Exception('test');
     $result = $member->getMemberByUsernamePassword($_POST['username'], $_POST['password']);
 
-    if(!$result){
+    if (!$result) {
       throw new PDOException('Invalid username or password. Please try again.');
     } else {
+      // TODO: Check if the role is NULL, set the session role as 'member', otherwise set the session role as 'admin'
+      // Perhaps need to call router only() method twice,
+      // first for auth, second for admin/member
+
       // $session = new Session();
       $session->set('username', $_POST['username']);
       $session->set('logged-in', true);
+      // dd($_SESSION);
 
       sleep(2);
-      header('Location: /home');
+      header('location: /home');
       die();
     }
   } catch (PDOException $e) {
