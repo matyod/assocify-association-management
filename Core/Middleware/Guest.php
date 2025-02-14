@@ -6,8 +6,8 @@ class Guest
 {
   public function handle()
   {
-    if ($_SESSION['user'] ?? false) {
-      header('Location: /');
+    if ($_SESSION['logged-in'] ?? false) {
+      header('Location: /home');
       die();
     }
   }
