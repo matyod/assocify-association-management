@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // return require view_path('registration/index.view.php'');
   try {
     // throw new Exception('SAJA SAJA JE');
-    $db = Database::getInstance();
+    // $db = Database::getInstance();
     $member = new Member($db);
 
     try {
