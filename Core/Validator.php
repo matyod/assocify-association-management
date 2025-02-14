@@ -11,6 +11,7 @@ class Validator
   protected const REGEX_PASSWORD_3 = '/[\d]+/';
   protected const REGEX_PASSWORD_4 = '/[!@#$%^&*]+/';
   protected const COUNTRY_CODES = ['673', '62', '60', '65'];
+  // TODO: store country codes array somewhere else
 
   protected static function trimString($value)
   {
