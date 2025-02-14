@@ -26,6 +26,13 @@ class Member
   public function getMemberByUsername($username)
   {
     $sql = 'SELECT * FROM members WHERE username = :username';
+    // TODO: Change above with below to differentiate regular members and admins
+    // $sql = 'SELECT m.username, m.password, cm.role
+    // FROM association.members m
+    // LEFT JOIN association.committee_members cm
+    // ON m.member_id = cm.c_member_id
+    // WHERE m.username = :username
+    // LIMIT 1';
     return $this->db->fetchOne($sql, ['username' => $username]);
     // TODO: try-catch
   }
