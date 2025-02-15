@@ -1,58 +1,58 @@
 <?php
 
-$router->get('/', 'controllers/index.php');
-$router->get('/home', 'controllers/home/index.php')->only('auth');
+$router->get('/', 'index.php');
+$router->get('/home', 'home/index.php')->only('auth');
 
-$router->get('/notifications', 'controllers/notifications/index.php')->only('auth');
+$router->get('/notifications', 'notifications/index.php')->only('auth');
 
-$router->get('/events', 'controllers/events/index.php')->only('auth');
-$router->get('/event', 'controllers/events/show.php')->only('auth');
-$router->get('/events/create', 'controllers/events/create.php')->only('auth');
-$router->get('/events/update', 'controllers/events/update.php')->only('auth');
+$router->get('/events', 'events/index.php')->only('auth');
+$router->get('/event', 'events/show.php')->only('auth');
+$router->get('/events/create', 'events/create.php')->only('auth');
+$router->get('/events/update', 'events/update.php')->only('auth');
 // TODO: create post
 // TODO: update post
 
-$router->get('/locations', 'controllers/locations/index.php')->only('auth');
-$router->get('/location', 'controllers/locations/show.php')->only('auth');
-$router->get('/locations/create', 'controllers/locations/create.php')->only('auth');
-$router->get('/locations/update', 'controllers/locations/update.php')->only('auth');
+$router->get('/locations', 'locations/index.php')->only('auth');
+$router->get('/location', 'locations/show.php')->only('auth');
+$router->get('/locations/create', 'locations/create.php')->only('auth');
+$router->get('/locations/update', 'locations/update.php')->only('auth');
 // TODO: create post
 // TODO: update post
 
-$router->get('/committees', 'controllers/committees/index.php')->only('auth');
-$router->get('/committee', 'controllers/committees/show.php')->only('auth');
+$router->get('/committees', 'committees/index.php')->only('auth');
+$router->get('/committee', 'committees/show.php')->only('auth');
 // dump($_SERVER);
 // dumpDie($_SESSION);
-$router->get('/committees/create', 'controllers/committees/create.php')->only('auth');
-$router->get('/committees/update', 'controllers/committees/update.php')->only('auth');
-$router->get('/committees/member-registration', 'controllers/committees/members-reg.php')->only('auth');
+$router->get('/committees/create', 'committees/create.php')->only('auth');
+$router->get('/committees/update', 'committees/update.php')->only('auth');
+$router->get('/committees/member-registration', 'committees/members-reg.php')->only('auth');
 // TODO: create post
 // TODO: update post
 // TODO: member register post
 
-$router->get('/members', 'controllers/members/index.php')->only('auth');
-$router->get('/member', 'controllers/members/show.php')->only('auth');
-$router->get('/members/create', 'controllers/members/create.php')->only('auth');
+$router->get('/members', 'members/index.php')->only('auth');
+$router->get('/member', 'members/show.php')->only('auth');
+$router->get('/members/create', 'members/create.php')->only('auth');
 // TODO: create post
 
-$router->get('/accounts/update', 'controllers/accounts/update.php')->only('auth');
+$router->get('/accounts/update', 'accounts/update.php')->only('auth');
 // TODO: update post
 
-$router->get('/qr/scan', 'controllers/qr/scan.php')->only('auth');
-$router->get('/qr/show', 'controllers/qr/show.php')->only('auth');
+$router->get('/qr/scan', 'qr/scan.php')->only('auth');
+$router->get('/qr/show', 'qr/show.php')->only('auth');
 
-$router->get('/login', 'controllers/authentication/index.php')->only('guest');
-$router->post('/login', 'controllers/authentication/login.php')->only('guest');
-$router->delete('/logout', 'controllers/authentication/logout.php')->only('auth');
+$router->get('/login', 'authentication/index.php')->only('guest');
+$router->post('/login', 'authentication/login.php')->only('guest');
+$router->delete('/logout', 'authentication/logout.php')->only('auth');
 // NOTE: maybe POST logout
 
-$router->get('/register', 'controllers/registration/index.php')->only('guest');
-$router->post('/register', 'controllers/registration/register.php')->only('guest');
+$router->get('/register', 'registration/index.php')->only('guest');
+$router->post('/register', 'registration/register.php')->only('guest');
 // TODO: login post
 
 // TODO testing only, delete later
-$router->get('/log', 'controllers/logtest.php');
-$router->get('/log2', 'controllers/logtest2.php');
+$router->get('/log', 'logtest.php');
+$router->get('/log2', 'logtest2.php');
 
 # TODO
 
@@ -62,40 +62,40 @@ $router->get('/log2', 'controllers/logtest2.php');
 // Here’s how you can rename your routes while following RESTful conventions:
 
 // Updated Routes
-// $router->get('/', 'controllers/home/index.php');
+// $router->get('/', 'home/index.php');
 
-// $router->get('/notifications', 'controllers/notifications/index.php');
+// $router->get('/notifications', 'notifications/index.php');
 
-// $router->get('/events', 'controllers/events/index.php');         // List all events
-// $router->get('/events/new', 'controllers/events/create.php');    // Show event creation form
-// $router->post('/events', 'controllers/events/store.php');        // Handle event creation
-// $router->get('/events/{id}', 'controllers/events/show.php');     // Show a specific event
-// $router->get('/events/{id}/edit', 'controllers/events/edit.php');// Show event edit form
-// $router->put('/events/{id}', 'controllers/events/update.php');   // Update an event
-// $router->delete('/events/{id}', 'controllers/events/delete.php');// Delete an event
+// $router->get('/events', 'events/index.php');         // List all events
+// $router->get('/events/new', 'events/create.php');    // Show event creation form
+// $router->post('/events', 'events/store.php');        // Handle event creation
+// $router->get('/events/{id}', 'events/show.php');     // Show a specific event
+// $router->get('/events/{id}/edit', 'events/edit.php');// Show event edit form
+// $router->put('/events/{id}', 'events/update.php');   // Update an event
+// $router->delete('/events/{id}', 'events/delete.php');// Delete an event
 
-// $router->get('/committees', 'controllers/committees/index.php');      // List all committees
-// $router->get('/committees/new', 'controllers/committees/create.php'); // Show committee creation form
-// $router->post('/committees', 'controllers/committees/store.php');     // Handle committee creation
-// $router->get('/committees/{id}', 'controllers/committees/show.php');  // Show a specific committee
-// $router->get('/committees/{id}/edit', 'controllers/committees/edit.php'); // Show committee edit form
-// $router->put('/committees/{id}', 'controllers/committees/update.php'); // Update a committee
-// $router->delete('/committees/{id}', 'controllers/committees/delete.php'); // Delete a committee
-// $router->post('/committees/{id}/members', 'controllers/committees/members-reg.php'); // Register a member to a committee
+// $router->get('/committees', 'committees/index.php');      // List all committees
+// $router->get('/committees/new', 'committees/create.php'); // Show committee creation form
+// $router->post('/committees', 'committees/store.php');     // Handle committee creation
+// $router->get('/committees/{id}', 'committees/show.php');  // Show a specific committee
+// $router->get('/committees/{id}/edit', 'committees/edit.php'); // Show committee edit form
+// $router->put('/committees/{id}', 'committees/update.php'); // Update a committee
+// $router->delete('/committees/{id}', 'committees/delete.php'); // Delete a committee
+// $router->post('/committees/{id}/members', 'committees/members-reg.php'); // Register a member to a committee
 
-// $router->get('/members', 'controllers/members/index.php');       // List all members
-// $router->get('/members/new', 'controllers/members/create.php');  // Show member creation form
-// $router->post('/members', 'controllers/members/store.php');      // Handle member creation
-// $router->get('/members/{id}', 'controllers/members/show.php');   // Show a specific member
+// $router->get('/members', 'members/index.php');       // List all members
+// $router->get('/members/new', 'members/create.php');  // Show member creation form
+// $router->post('/members', 'members/store.php');      // Handle member creation
+// $router->get('/members/{id}', 'members/show.php');   // Show a specific member
 
-// $router->get('/accounts/{id}/edit', 'controllers/accounts/edit.php'); // Show account edit form
-// $router->put('/accounts/{id}', 'controllers/accounts/update.php'); // Update an account
+// $router->get('/accounts/{id}/edit', 'accounts/edit.php'); // Show account edit form
+// $router->put('/accounts/{id}', 'accounts/update.php'); // Update an account
 
-// $router->get('/qr/scan', 'controllers/qr/scan.php');  // Scan QR
-// $router->get('/qr/show', 'controllers/qr/show.php');  // Show QR details
+// $router->get('/qr/scan', 'qr/scan.php');  // Scan QR
+// $router->get('/qr/show', 'qr/show.php');  // Show QR details
 
-// $router->get('/login', 'controllers/auth/login.php');
-// $router->post('/logout', 'controllers/auth/logout.php'); // Logout should use POST for security reasons
+// $router->get('/login', 'auth/login.php');
+// $router->post('/logout', 'auth/logout.php'); // Logout should use POST for security reasons
 
 // Changes & Justifications
 
