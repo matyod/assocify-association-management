@@ -58,11 +58,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // first for auth, second for admin/member
 
       // $session = new Session();
-      $session->set('username', $_POST['username']);
-      $session->set('logged-in', true);
+      $session->login([
+        'username' => $result['username'],
+        'logged-in' => true,
+      ]);
+      // session_regenerate_id(true);
+      // $session->set('username', $result['username']);
+      // $session->set('logged-in', true);
       // dd($_SESSION);
 
-      sleep(2);
+      sleep(1.5);
       header('location: /home');
       die();
     }
