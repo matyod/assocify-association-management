@@ -46,7 +46,12 @@ class Member
 
   public function getMemberByUsernamePassword($username, $password)
   {
-    $sql = 'SELECT * FROM members WHERE username = :username AND password = :password';
+    $sql = 'SELECT m.username, m.password, cm.role
+            FROM association.members m
+            LEFT JOIN association.committee_members cm
+            ON m.member_id = cm.c_member_id
+            WHERE username = :username 
+            AND password = :password';
     return $this->db->fetchOne($sql, [
       'username' => $username,
       'password' => $password,
