@@ -29,7 +29,10 @@
     <div class="flex items-center">
       <div class="text-gray-500">
         <?php if ($_SESSION['logged-in'] ?? false): ?>
-          <a href="/logout">Logout</a>
+          <form action="/logout" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Logout">
+          </form>
         <?php else: ?>
           <a href="/login">Login</a>
           <a href="/register">Register</a>
