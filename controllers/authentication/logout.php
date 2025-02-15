@@ -1,11 +1,7 @@
 <?php
+$session->logout();
 
-// use Core\Session;
-
-// $session = new Session();
-$session->destroy();
-
-sleep(2);
-// header('Location: /');
-header('Location: /login');
+// redirect user to the homepage
+sleep(1.5);
+header('location: /login');
 die();
