@@ -24,7 +24,7 @@ $session = new Session();
 $reqUri = $_SERVER['REQUEST_URI'];
 $uri = parse_url($reqUri)['path'];
 
-$method = $_SERVER['REQUEST_METHOD'];
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 // TODO $_POST['method'];
 
 require base_path('routes.php');
