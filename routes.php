@@ -43,7 +43,7 @@ $router->get('/qr/show', 'controllers/qr/show.php')->only('auth');
 
 $router->get('/login', 'controllers/authentication/index.php')->only('guest');
 $router->post('/login', 'controllers/authentication/login.php')->only('guest');
-$router->get('/logout', 'controllers/authentication/logout.php')->only('auth');
+$router->delete('/logout', 'controllers/authentication/logout.php')->only('auth');
 // NOTE: maybe POST logout
 
 $router->get('/register', 'controllers/registration/index.php')->only('guest');
